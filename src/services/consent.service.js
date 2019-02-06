@@ -13,7 +13,7 @@ export function getConsents (params = { pageSize: 10, page: 1 }) {
   }).then(response => response.data)
 }
 
-export function saveConsents (consent) {
+export function saveConsent (consent) {
   return axios({
     method: 'POST',
     url: '/consent',

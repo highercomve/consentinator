@@ -9,7 +9,7 @@ describe('Test offline functionality for Consent Service', () => {
 
   it('Set consent should mark a set of consents for the user email', async () => {
     const consentData = factoryConsent()
-    const consent = await ConsentService.saveConsents(consentData)
+    const consent = await ConsentService.saveConsent(consentData)
     expect(consent.id).toBeDefined()
     expect(consent.userEmail).toEqual(consentData.userEmail)
     expect(consent.userName).toEqual(consentData.userName)
@@ -26,7 +26,7 @@ describe('Test offline functionality for Consent Service', () => {
       let i
       for (i = 0; i < 9; i++) {
         const consentData = factoryConsent()
-        await ConsentService.saveConsents(consentData)
+        await ConsentService.saveConsent(consentData)
       }
     })
 

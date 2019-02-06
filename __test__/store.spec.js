@@ -62,9 +62,21 @@ describe('Store spec', () => {
   })
 
   describe('test service integration', () => {
-    localStorage.removeItem('consents')
     it('get consents from service', async () => {
-      store.dispatch(getConsents())
+      await store.dispatch(getConsents())
+      const state = store.getState()
+      expect(state.consents.items.length).toBe(0)
+    })
+
+    it('save consent in service', async () => {
+      const consent = factoryConsent()
+      await store.dispatch(saveConsent(consent))
+      const state = store.getState()
+      expect(state.consents.items.length).toBe(1)
+      expect(state.consents.items[0].userName).toEqual(consent.userName)
+      expect(state.consents.items[0].userEmail).toEqual(consent.userEmail)
+      expect(state.consents.items[0].agreements).toEqual(consent.agreements)
+      expect(state.consents.total).toBe(1)
     })
   })
 })
