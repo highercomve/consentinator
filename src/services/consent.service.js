@@ -5,10 +5,11 @@ if (process.env.NODE_ENV !== 'production') {
   MockLocal(axios)
 }
 
-export function getConsents () {
+export function getConsents (params = { pageSize: 10, page: 1 }) {
   return axios({
     method: 'GET',
-    url: '/consents'
+    url: '/consents',
+    params
   }).then(response => response.data)
 }
 
