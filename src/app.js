@@ -61,12 +61,16 @@ function AppNoStyle ({ classes }) {
           <div className={classes.toolbar} />
           <Divider />
           <MenuList>
-            <MenuItem>
-              <Link to='/'>Collected Consents</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to='/new-consent'>Give a consent</Link>
-            </MenuItem>
+            <Link to='/'>
+              <MenuItem>
+                Collected Consents
+              </MenuItem>
+            </Link>
+            <Link to='/new-consent'>
+              <MenuItem>
+                Give a consent
+              </MenuItem>
+            </Link>
           </MenuList>
         </Drawer>
         <main className={classes.content}>
