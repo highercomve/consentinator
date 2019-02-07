@@ -1,21 +1,32 @@
 import Faker from 'faker'
 
-const posibleAgreements = ['newsletter', 'ads', 'statistics']
+const posibleAgreements = [
+  'Receive news letters',
+  'Be show targeted ads',
+  'Contribute to anonymous visit statistics'
+]
 
+/**
+ * Create a random aggrement
+ * @param {Number} size
+ * @param {Array} acc
+ * @param {Array} elements
+ * @returns {Array}
+ */
 const getRandomArraySize = (size = 1, acc = [], elements = []) => {
   const elementToGet = Math.floor(Math.random() * elements.length)
   if (acc.length < size) {
+    acc.push(elements[elementToGet])
     return getRandomArraySize(
       size,
-      acc.push(elements[elementToGet]),
-      [...elements.slice(0, elementToGet - 1), ...elements.slice(elementToGet)]
+      acc,
+      [...elements.slice(0, elementToGet), ...elements.slice(elementToGet + 1)]
     )
-  } else {
-    return acc
   }
+  return acc
 }
-const randomAggrements = () => {
-  const numberOfAgremments = Math.floor(Math.random() * posibleAgreements.length)
+const randomNumberOfAggrements = () => (Math.floor(Math.random() * posibleAgreements.length) + 1)
+const randomAggrements = (numberOfAgremments = randomNumberOfAggrements()) => {
   return getRandomArraySize(numberOfAgremments, [], posibleAgreements)
 }
 
