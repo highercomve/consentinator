@@ -10,14 +10,9 @@ import MenuList from '@material-ui/core/MenuList'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
-import { connect } from 'react-redux'
-
-import ConsentList from './components/ConsentList'
+import GivenConsents from './components/GivenConsents'
 import NewConsent from './components/NewConsent'
 
-const ConnectedList = connect(
-  (state) => ({ consents: state.consents.items })
-)(ConsentList)
 
 const drawerWidth = 240
 const styles = (theme) => ({
@@ -76,7 +71,7 @@ function AppNoStyle ({ classes }) {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Route exact path='/' component={ConnectedList} />
+          <Route exact path='/' component={GivenConsents} />
           <Route path='/new-consent' component={NewConsent} />
         </main>
       </section>
