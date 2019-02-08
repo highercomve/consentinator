@@ -1,7 +1,25 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import ConsentForm from './ConsentForm'
+import { saveConsent } from '../actions/consent.actions'
+import { LOADING_STATES } from '../reducers/consent.reducer'
+import { withRouter } from 'react-router-dom'
 
-export default function NewConsent () {
+const NewConsent = connect(
+  (state) => ({
+    loading: state.consents.loading === LOADING_STATES.saving
+  }),
+  (dispatch) => ({
+    saveConsent: (data) => dispatch(saveConsent(data))
+  })
+)(({ history, saveConsent, loading }) => {
+  const onSubmit = (e, data) => {
+    saveConsent(data)
+      .then(() => history.push('/'))
+  }
   return (
-    <div>New Consent Form</div>
+    <ConsentForm onSubmit={onSubmit} loading={loading} />
   )
-}
+})
+
+export default withRouter(NewConsent)
