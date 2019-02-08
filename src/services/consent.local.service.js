@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter'
 import Faker from 'faker'
 
-const CONSENT_KEY = CONSENT_KEY
+const CONSENT_KEY = 'CONSENTS'
 
 export function MockLocal (axios, delayResponse = 1) {
   const mock = new MockAdapter(axios, { delayResponse })

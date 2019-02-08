@@ -75,7 +75,7 @@ export default function ConsentForm ({ onSubmit, loading }) {
               </Grid>
             )
           })}
-          <Button disable={loading} type='submit' variant='contained' color='primary'>
+          <Button disabled={loading} type='submit' variant='contained' color='primary'>
             {loading ? 'Saving' : 'Save consent'}
           </Button>
         </form>

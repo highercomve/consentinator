@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
@@ -9,10 +9,12 @@ import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
+import { connect } from 'react-redux'
 
 import GivenConsents from './components/GivenConsents'
 import NewConsent from './components/NewConsent'
-
+import { BASE_URL } from './constants'
+import { getConsents } from './actions/consent.actions'
 
 const drawerWidth = 240
 const styles = (theme) => ({
@@ -38,7 +40,10 @@ const styles = (theme) => ({
   }
 })
 
-function AppNoStyle ({ classes }) {
+function AppNoStyle ({ classes, getConsents, consents }) {
+  useEffect(() => {
+    getConsents({ ...consents })
+  }, [])
   return (
     <Router>
       <section className={classes.root}>
@@ -61,12 +66,12 @@ function AppNoStyle ({ classes }) {
           <div className={classes.toolbar} />
           <Divider />
           <MenuList>
-            <Link to='/'>
+            <Link to={`${BASE_URL}/`}>
               <MenuItem>
                 Collected Consents
               </MenuItem>
             </Link>
-            <Link to='/new-consent'>
+            <Link to={`${BASE_URL}/new-consent`}>
               <MenuItem>
                 Give a consent
               </MenuItem>
@@ -83,4 +88,9 @@ function AppNoStyle ({ classes }) {
   )
 }
 
-export default withStyles(styles)(AppNoStyle)
+const CAppNoStyle = connect(
+  (state) => ({ consents: state.consents }),
+  { getConsents }
+)(AppNoStyle)
+
+export default withStyles(styles)(CAppNoStyle)
