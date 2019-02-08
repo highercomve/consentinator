@@ -80,8 +80,8 @@ function AppNoStyle ({ classes, getConsents, consents }) {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Route exact path='/' component={GivenConsents} />
-          <Route path='/new-consent' component={NewConsent} />
+          <Route exact path={`${BASE_URL}/`} component={GivenConsents} />
+          <Route path={`${BASE_URL}/new-consent`} component={NewConsent} />
         </main>
       </section>
     </Router>
