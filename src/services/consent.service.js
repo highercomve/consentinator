@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.ENV !== 'production') {
   const { MockLocal } = require('./consent.local.service')
   MockLocal(axios)
 }
