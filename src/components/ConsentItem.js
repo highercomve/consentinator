@@ -1,9 +1,8 @@
 import React from 'react'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
-import { withStyles } from '@material-ui/core/styles'
 
-function ConsentItemNoStyle ({ id, userName, userEmail, agreements }) {
+export default function ConsentItem ({ id, userName, userEmail, agreements }) {
   return (
     <TableRow className='consent-item' id={id}>
       <TableCell className='consent-item__name'>{userName}</TableCell>
@@ -14,5 +13,3 @@ function ConsentItemNoStyle ({ id, userName, userEmail, agreements }) {
     </TableRow>
   )
 }
-
-export default withStyles()(ConsentItemNoStyle)

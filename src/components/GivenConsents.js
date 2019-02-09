@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Paper from '@material-ui/core/Paper'
-import { withStyles } from '@material-ui/core/styles'
 import ConsentList from './ConsentList'
 import ListPagination from './ListPagination'
 import { getConsents } from '../actions/consent.actions'
@@ -12,7 +11,7 @@ const ConnectPagination = connect(
   { changePage: getConsents }
 )(ListPagination)
 
-function GivenConsentsNoStyle () {
+export default function GivenConsents () {
   return (
     <Paper>
       <ConnectedList />
@@ -20,5 +19,3 @@ function GivenConsentsNoStyle () {
     </Paper>
   )
 }
-
-export default withStyles()(GivenConsentsNoStyle)

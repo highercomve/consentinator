@@ -13,9 +13,9 @@ describe('Consent Item component', () => {
     ]
     const wrapper = mount(<ConsentList consents={consentList} />)
     wrapper.find('.consent-list .consent-item').children()
-    expect(wrapper.find('.consent-list__header .consent-list__name-label')).toHaveText('Name')
-    expect(wrapper.find('.consent-list__header .consent-list__email-label')).toHaveText('Email')
-    expect(wrapper.find('.consent-list__header .consent-list__agreements-label')).toHaveText('Consent given for')
-    expect(wrapper.find('.consent-list .consent-item')).toHaveLength(4)
+    expect(wrapper.find('.consent-list__header th.consent-list__name-label')).toHaveText('Name')
+    expect(wrapper.find('.consent-list__header th.consent-list__email-label')).toHaveText('Email')
+    expect(wrapper.find('.consent-list__header th.consent-list__agreements-label')).toHaveText('Consent given for')
+    expect(wrapper.find('.consent-list tr.consent-item')).toHaveLength(4)
   })
 })

@@ -21,6 +21,7 @@ export default function ListPagination ({ total, page, pageSize, changePage }) {
           justify='center'
           sm>
           <IconButton
+            className='back-button'
             disabled={page === 1}
             color='primary'
             onClick={() => changePage({ pageSize, page: page - 1 })}
@@ -30,7 +31,7 @@ export default function ListPagination ({ total, page, pageSize, changePage }) {
         </Grid>
         <Grid
           container
-          sm={10} 
+          sm={10}
           direction='row'
           justify='center'
           alignItems='center'
@@ -38,6 +39,7 @@ export default function ListPagination ({ total, page, pageSize, changePage }) {
           {pages.map((_, index) => {
             return (
               <Button
+                className={`goto-button goto-page-${index + 1}`}
                 key={index}
                 color='primary'
                 disabled={(index + 1 === page)}
@@ -53,6 +55,7 @@ export default function ListPagination ({ total, page, pageSize, changePage }) {
           justify='center'
           sm>
           <IconButton
+            className='forward-button'
             disabled={page === numberOfPages}
             color='primary'
             onClick={() => changePage({ pageSize, page: page + 1 })}

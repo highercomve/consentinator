@@ -6,12 +6,24 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/core'
+import classNames from 'classnames'
 
-function ConsentListNoStyle ({ consents }) {
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto'
+  },
+  table: {
+    minWidth: 700
+  }
+})
+
+function ConsentList ({ consents, classes }) {
   return (
-    <Paper className='consent-list'>
-      <Table>
+    <Paper className={classNames(classes.root, 'consent-list')}>
+      <Table className={classes.table}>
         <TableHead className='consent-list__header'>
           <TableRow>
             <TableCell className='consent-list__name-label'>Name</TableCell>
@@ -27,4 +39,4 @@ function ConsentListNoStyle ({ consents }) {
   )
 }
 
-export default withStyles()(ConsentListNoStyle)
+export default withStyles(styles)(ConsentList)

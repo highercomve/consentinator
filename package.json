@@ -30,6 +30,7 @@
     "axios": "^0.18.0",
     "axios-mock-adapter": "^1.16.0",
     "babel-jest": "^24.0.0",
+    "classnames": "^2.2.6",
     "dayjs": "^1.8.0",
     "dompurify": "^1.0.9",
     "enzyme": "^3.8.0",
